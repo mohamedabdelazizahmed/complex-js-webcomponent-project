@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Complex Web Component </title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+    
+    </style>
+    <script src="model.js"></script>
+
+</head>
+<body>
+    
+    <uc-model>
+        <h1 slot="title">Please Confirm ...</h1>
+        <p>With you Confirmation  you agree  to pay the full moment ...</p>
+    </uc-model>
+    <p>Please confirm your choice.</p>
+    <button>Show Details & Confirm </button>
+    <script>
+        const confirmButton = document.querySelector('button');
+        const model =  document.querySelector('uc-model');
+        model.addEventListener('confirm',()=>{
+            console.log('Confirmed .....');
+        });
+
+
+        model.addEventListener('cancel',()=>{
+            console.log('cancel ...');
+        })
+        confirmButton.addEventListener('click',(event)=>{
+            //model.setAttribute('opened','');
+            if(!model.isOpen){
+                model.open();
+                console.log(model.isOpen);
+                console.log('.... Opening ....')
+            }
+
+        });
+    
+    </script>
+</body>
+</html>
